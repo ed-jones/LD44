@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://UpButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UpButton.gd" type="Script" id=2]
+[ext_resource path="res://DownButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://DownButton.gd" type="Script" id=4]
+[ext_resource path="res://smallnumber.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI_Panel.png" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func clicked():
+	get_parent().get_parent().get_node(\"Player\").upgradeShotSpeed()"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func clicked():
+	get_parent().get_parent().get_node(\"Player\").downgradeShotSpeed()"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func clicked():
+	get_parent().get_parent().get_node(\"Player\").upgradeDamage()"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func clicked():
+	get_parent().get_parent().get_node(\"Player\").downgradeDamage()"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UpButton" parent="." instance=ExtResource( 1 )]
+position = Vector2( 208, -296 )
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="DownButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, -248 )
+z_index = 1
+script = ExtResource( 4 )
+
+[node name="UpButton2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 208, -200 )
+z_index = 1
+script = SubResource( 1 )
+
+[node name="DownButton2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, -152 )
+z_index = 1
+script = SubResource( 2 )
+
+[node name="UpButton3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 208, -92 )
+z_index = 1
+script = SubResource( 3 )
+
+[node name="DownButton3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, -44 )
+z_index = 1
+script = SubResource( 4 )
+
+[node name="DownButton4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 208, -44 )
+z_index = 1
+script = SubResource( 4 )
+
+[node name="SmallNumber" parent="." instance=ExtResource( 5 )]
+position = Vector2( 228, -272 )
+scale = Vector2( 4, 4 )
+z_index = 2
+
+[node name="SmallNumber2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 228, -176 )
+scale = Vector2( 4, 4 )
+z_index = 2
+
+[node name="SmallNumber3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 228, -68 )
+scale = Vector2( 4, 4 )
+z_index = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, -76 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://bullet.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+var VELOCITY = Vector2(0, -300)
+
+
+func _process(delta):
+    move(delta)
+    removeWhenOffScreen()
+
+func move(delta):
+    global_position += VELOCITY * delta
+
+func removeWhenOffScreen():
+    if global_position.y < 0:
+        queue_free()
+
+func _ready():
+	$LaserArea2D.connect(\"area_entered\", self, \"hit\")
+	
+
+func hit(object):
+    if object.name == 'EnemyArea2D':
+        queue_free()"
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.53184
+height = 5.22954
+
+[node name="Laser" type="Node2D"]
+scale = Vector2( 4, 4 )
+script = SubResource( 2 )
+
+[node name="LaserArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea2D"]
+position = Vector2( -0.0141602, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="LaserArea2D"]
+texture = ExtResource( 1 )
+
